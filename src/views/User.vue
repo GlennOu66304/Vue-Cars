@@ -1,14 +1,14 @@
 <template>
   <!-- Landing -->
-  <div class="landing">
+  <div class="user">
     <!-- emap not elmp -->
-    <h1>home page</h1>
+    <h1>user page</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Landing",
+  name: "User",
   data() {
     return {};
   },

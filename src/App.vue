@@ -1,34 +1,30 @@
 <template>
   <div id="app">
-    <Nav />
+    <!-- @1 base page 1. map area -->
+    <Amap2 />
+
+    <!-- @2 second layer 2 is the cars data -->
+   <Cars/>
+    <!-- @3 third layer is route page -->
     <keep-alive>
       <router-view />
     </keep-alive>
-
-    <Footer />
-    <!-- this compoenn show only the v-show the loading is true -->
-        <Loading v-show="loading"/>
   </div>
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
-// import Landing from "./components/Landing.vue";
-import Footer from "./components/Footer.vue";
 import jwt_decode from "jwt-decode";
 import store from "./store/index.js";
-
-import Loading from "./components/Loading.vue"
+import Amap2 from "./components/Amap2.vue";
+import Cars from "./components/Cars.vue";
 export default {
   name: "App",
   // jwt decode:
-data(){
-  return {
-    loading:false
-  }
-
-},
-
+  data() {
+    return {
+      loading: false,
+    };
+  },
 
   // 1.page start
   created() {
@@ -43,15 +39,13 @@ data(){
         store.dispatch("setAuthentication", false);
         // 3.dipath the user information to the store
         store.dispatch("setUser", {});
-        this.$router.push('/login')
-      }else{
-         // 4.dispath the true or false to the store
-      store.dispatch("setAuthentication", !this.isEmpty(decode));
-      // 3.dipath the user information to the store
-      store.dispatch("setUser", decode);
-
+        this.$router.push("/login");
+      } else {
+        // 4.dispath the true or false to the store
+        store.dispatch("setAuthentication", !this.isEmpty(decode));
+        // 3.dipath the user information to the store
+        store.dispatch("setUser", decode);
       }
-     
     }
   },
 
@@ -66,9 +60,8 @@ data(){
     },
   },
   components: {
-    Nav,
-    Footer,
-    Loading
+    Amap2,
+    Cars
   },
 };
 </script>

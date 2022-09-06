@@ -2,17 +2,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Landing from "../views/Landing.vue";
-import Login from "../views/Login.vue";
-import SignUp from "../views/SignUp.vue";
-import AllProfiles from "../views/AllProfiles.vue";
-import Profile from "../views/Profile.vue";
-import Dashboard from "../views/Dashboard.vue";
-import CreateDashboard from "../views/CreateDashboard.vue";
-import EditDashboard from "../views/EditDashboard.vue";
-import CreateExperience from "../views/CreateExperience.vue";
-import CreateEducation from "../views/CreateEducation.vue";
-import Posts from "../views/Posts.vue";
-import Comment from "../views/Comment.vue";
+import User from "../views/User.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -22,66 +12,16 @@ const routes = [
   },
   {
     path: "/",
-    name: "landing",
+    name: "Landing",
     component: Landing,
   },
   {
-    path: "/allprofiles",
-    name: "allprofiles",
-    component: AllProfiles,
-  },
-  {
-    path: `/profile/:handle`,
-    name: "profile",
-    component: Profile,
-  },
-  {
-    path: "/login",
-    name: "login",
-    component: Login,
-  },
-  {
-    path: "/signup",
-    name: "signup",
-    component: SignUp,
-  },
-  {
-    path: "/dashboard",
-    name: "dashboard",
-    component: Dashboard,
-  },
-  {
-    path: "/create-dashboard",
-    name: "create-dashboard",
-    component: CreateDashboard,
-  },
-  {
-    path: "/edit-profile",
-    name: "edit-profile",
-    component: EditDashboard,
-  },
-  {
-    path: "/add-experience",
-    name: "add-experience",
-    component: CreateExperience,
-  },
-  {
-    path: "/add-education",
-    name: "add-education",
-    component: CreateEducation,
+    path: "/user",
+    name: "user",
+    component: User,
   },
 
-  {
-    path: "/comments",
-    name: "posts",
-    component: Posts,
-  },
-  {
-    path: `/comments/:id`,
-    name: "comment",
-    component: Comment,
-  },
-  
+
 ];
 
 // initainl a new vue Router

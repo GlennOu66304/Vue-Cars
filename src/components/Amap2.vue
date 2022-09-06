@@ -1,40 +1,22 @@
 <template>
   <div class="post-form mb-3">
-    <!-- placeholder -->
-    <div class="card card-info">
-      <div class="card-header bg-info text-white">
-        说点啥
-      </div>
-      <!-- textArea -->
-      <!-- submit button -->
-      <form @submit.prevent="submit" autocomplete="off">
-        <TextArea
-          type="text"
-          placeholder="随便写点啥"
-          v-model="text"
-          :errors="errors.text"
-        />
-        <input type="submit" class="btn btn-dark" />
-      </form>
-
-      <div class="card-body"></div>
-    </div>
+    <el-amap vid="amapContainer"> </el-amap>
   </div>
 </template>
 
 <script>
-import TextArea from "./TextArea.vue";
+import { AMapManager, lazyAMapApiLoaderInstance } from "vue-amap";
 export default {
-  name: "AddFollowComment",
+  name: "Amap2",
   data() {
     return {
-      text: "",
-      errors: [],
+      map: null,
+      zoom: 12,
+      center: [121.508434, 31.207508],
     };
   },
   props: {
-    comment_id:String,
-
+    comment_id: String,
   },
   methods: {
     submit() {
@@ -59,10 +41,24 @@ export default {
     },
   },
 
-  components: {
-    TextArea,
+  components: {},
+  mounted() {
+    lazyAMapApiLoaderInstance.load().then(() => {
+      // your code ...
+
+      //Amap issue
+      this.map = new AMap.Map("amapContainer", {
+        center: new AMap.LngLat(121.59996, 31.197646),
+        zoom: this.zoom,
+      });
+    });
   },
 };
 </script>
 
-<style></style>
+<style>
+.mb-3 {
+  margin-bottom: 1rem !important;
+  height: 800px;
+}
+</style>
