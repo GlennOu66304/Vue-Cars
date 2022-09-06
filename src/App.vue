@@ -1,69 +1,66 @@
 <template>
   <div id="app">
-    <!-- @1 base page 1. map area -->
+    <Cars />
     <Amap2 />
-
-    <!-- @2 second layer 2 is the cars data -->
-   <Cars/>
-    <!-- @3 third layer is route page -->
-    <keep-alive>
+    <!-- 
+      1.side bar only display when the route is in the /user, /carlist, 
+      2. with the / will not show the side bar,     
+      3.also when user clik the text in the router page, the side bar will close
+     -->
+    <!-- use the :class to decide if it will open the window -->
+    <div class="router-sidebar" :class="[show ? '' : 'open']">
+      <!-- black box router view -->
       <router-view />
-    </keep-alive>
+    </div>
   </div>
 </template>
 
 <script>
 import jwt_decode from "jwt-decode";
 import store from "./store/index.js";
-import Amap2 from "./components/Amap2.vue";
 import Cars from "./components/Cars.vue";
+import Amap2 from "./components/Amap2.vue";
+
 export default {
   name: "App",
-  // jwt decode:
   data() {
     return {
-      loading: false,
+      show: false,
     };
   },
 
-  // 1.page start
-  created() {
-    if (localStorage.jwt_token) {
-      const decode = jwt_decode(localStorage.jwt_token);
-      // console.log(decode.exp);
-      const currentTime = Date.now() / 1000;
-
-      // expire time lesson than current time,means the token is expire, the current time is bigger than expire time
-      if (decode.exp < currentTime) {
-        // 4.dispath the true or false to the store
-        store.dispatch("setAuthentication", false);
-        // 3.dipath the user information to the store
-        store.dispatch("setUser", {});
-        this.$router.push("/login");
-      } else {
-        // 4.dispath the true or false to the store
-        store.dispatch("setAuthentication", !this.isEmpty(decode));
-        // 3.dipath the user information to the store
-        store.dispatch("setUser", decode);
-      }
-    }
-  },
-
-  methods: {
-    isEmpty(value) {
-      return (
-        value === undefined ||
-        value === null ||
-        (typeof value === "object" && Object.keys(value).length === 0) ||
-        (typeof value === "string" && value.trim().length === 0)
-      );
+  watch: {
+    $route: {
+      handler(newValue) {
+        const routeName = newValue.name;
+        console.log(routeName);
+        const show2 = routeName === "home" ? false : true;
+        this.show = show2;
+        console.log(this.show);
+      },
     },
   },
+  created() {},
+
+  methods: {},
   components: {
     Amap2,
-    Cars
+    Cars,
   },
 };
 </script>
 
-<style></style>
+<style>
+.router-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background-color: #394147;
+  z-index: 101;
+}
+.open {
+  right: -600px;
+}
+</style>

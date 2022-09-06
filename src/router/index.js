@@ -1,24 +1,24 @@
 // import the vue and the router
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Landing from "../views/Landing.vue";
+import App from "../App.vue";
 import User from "../views/User.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/home",
-    redirect: "/",
-  },
+
   {
     path: "/",
-    name: "Landing",
-    component: Landing,
-  },
-  {
-    path: "/user",
-    name: "user",
-    component: User,
+    name: "home",
+    component: App,
+    children: [
+      {
+        path: "/user",
+        name: "user",
+        component: User,
+      },
+
+    ]
   },
 
 

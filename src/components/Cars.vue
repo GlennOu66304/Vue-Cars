@@ -1,5 +1,5 @@
 <template>
-  <div class="post-form mb-3">
+  <div class="cars-list" @click="user">
     <h2>This is the Cars Data</h2>
   </div>
 </template>
@@ -17,26 +17,9 @@ export default {
    
   },
   methods: {
-    submit() {
-      const user = this.$store.getters.user;
-      const newComment = {
-        text: this.text,
-        name: user.name,
-        user: user.id,
-      };
-      this.$axios
-        .post(`/api/post/comment/${this.comment_id}`, newComment)
-        .then((res) => {
-          this.errors = {};
-          this.text = "";
-          console.log(res.data);
-          this.$emit("update");
-        })
-        .catch((err) => {
-          this.errors = err.response.data;
-        });
-      // console.log(this.msgInfo)
-    },
+   user(){
+    this.$router.push('/user')
+   }
   },
 
   components: {},
@@ -45,5 +28,9 @@ export default {
 </script>
 
 <style>
-
+.cars-list{
+  position: fixed;
+  top:10px;
+  z-index: 101;
+}
 </style>
