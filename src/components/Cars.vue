@@ -31,6 +31,6 @@ export default {
 .cars-list{
   position: fixed;
   top:10px;
-  z-index: 101;
+  z-index: 11;
 }
 </style>

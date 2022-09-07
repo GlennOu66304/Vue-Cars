@@ -2,14 +2,17 @@
   <div id="app">
     <Cars />
     <Amap2 />
+    <SelectCar />
     <!-- 
       1.side bar only display when the route is in the /user, /carlist, 
       2. with the / will not show the side bar,     
       3.also when user clik the text in the router page, the side bar will close
      -->
     <!-- use the :class to decide if it will open the window -->
-    <div class="router-sidebar" :class="[show ? '' : 'open']">
+    <!-- <div class="router-sidebar" :class="[show ? '' : 'open']"> -->
+    <div class="router-sidebar" :class="{ open: !show }">
       <!-- black box router view -->
+
       <router-view />
     </div>
   </div>
@@ -20,25 +23,29 @@ import jwt_decode from "jwt-decode";
 import store from "./store/index.js";
 import Cars from "./components/Cars.vue";
 import Amap2 from "./components/Amap2.vue";
-
+import SelectCar from "./components/SelecCar.vue";
 export default {
   name: "App",
   data() {
-    return {
-      show: false,
-    };
+    return {};
   },
-
-  watch: {
-    $route: {
-      handler(newValue) {
-        const routeName = newValue.name;
-        console.log(routeName);
-        const show2 = routeName === "home" ? false : true;
-        this.show = show2;
-        console.log(this.show);
-      },
+  computed: {
+    show() {
+      const routeName = this.$route;
+      // console.log(routeName.name)
+      return routeName.name === "home" ? false : true;
     },
+  },
+  watch: {
+    // $route: {
+    //   handler(newValue) {
+    //     const routeName = newValue.name;
+    //     console.log(routeName);
+    //     const show2 = routeName === "home" ? false : true;
+    //     this.show = show2;
+    //     console.log(this.show);
+    //   },
+    // },
   },
   created() {},
 
@@ -46,6 +53,7 @@ export default {
   components: {
     Amap2,
     Cars,
+    SelectCar,
   },
 };
 </script>
