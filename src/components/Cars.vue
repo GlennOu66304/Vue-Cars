@@ -7,10 +7,9 @@
       <swiper-slide><CarItem /></swiper-slide>
       <swiper-slide><CarItem /></swiper-slide>
       <swiper-slide><CarItem /></swiper-slide>
-      <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>
     </swiper>
-
+    <div class="swiper-button-prev" slot="button-prev"></div>
+    <div class="swiper-button-next" slot="button-next"></div>
     <span class="cars-title" @click="user">This is the Cars Data</span>
   </div>
 </template>
@@ -25,7 +24,7 @@ export default {
     return {
       swiperOption: {
         slidesPerView: 3,
-        spaceBetween: 20,
+        spaceBetween: 30,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -56,5 +55,9 @@ export default {
   left: 0;
   right: 0;
   widows: 100%;
+}
+.swiper {
+  margin-left: 50px;
+  margin-right: 50px;
 }
 </style>
