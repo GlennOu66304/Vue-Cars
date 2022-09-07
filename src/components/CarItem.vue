@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="car-wrapper">
     <section class="car-item">
       <header>
         <h4 class="car-logo">
@@ -48,12 +48,33 @@
         </a>
       </footer>
     </section>
+    <!-- <section class="car-item car-detailes" :style="'height:' + height">
+      <h4 class="parking-place">某某停车场
+
+        <i class="icon-close"></i>
+      </h4>
+      <header>
+        <h4 class="car-logo">
+          <img src="../assets/car-logo.png" alt="Mustang 2019款" />
+          <span class="car-name">Mustang 2019款</span>
+        </h4>
+        <p class="car-attr">
+          <span>新能源汽车 5座</span>
+        </p>
+      </header>
+    </section> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "CarItem",
+  props: {
+    height: {
+      type: String,
+      default: "180px",
+    },
+  },
   data() {
     return {};
   },
@@ -62,16 +83,18 @@ export default {
 
   components: {},
   mounted() {},
+  created() {
+    console.log(this.height);
+  },
 };
 </script>
 
 <style>
+
 .car-item {
-  width: 400px;
-  height: 150px;
+  height: 200px;
   border-radius: 24px;
   background-color: #fff;
-  margin: auto;
 }
 header {
   display: flex;
@@ -115,12 +138,15 @@ img {
 .car-license {
   font-size: 18px;
   padding-left: 8px;
+  margin-bottom: 0;
+ 
 }
-.car-bettery {
-  padding-left: 8px;
-}
+
 .car-battery {
   padding-left: 8px;
+  margin-top:0;
+   height: 50px;
+   
 }
 .car-battery-item {
   display: inline-block;
@@ -141,7 +167,8 @@ strong {
   font-size: 22px;
 }
 footer {
-  padding-top: 8px;
+  
+  padding-top: 15px;
   padding-left: 15px;
   display: inline-block;
 }
@@ -154,5 +181,25 @@ footer {
 }
 .right-arrow {
   float: right;
+}
+
+.car-detailes {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 0;
+}
+.parking-place {
+  position: relative;
+  padding:26px 0 20px;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 10px;
+  color:#a9adad;
+}
+.icon-close{
+  display: block;
+
 }
 </style>

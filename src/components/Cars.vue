@@ -1,11 +1,12 @@
 <template>
   <div class="cars-list">
     <swiper class="swiper" :options="swiperOption">
+      <swiper-slide><CarItem height="530px"/></swiper-slide>
       <swiper-slide><CarItem /></swiper-slide>
       <swiper-slide><CarItem /></swiper-slide>
+     <swiper-slide><CarItem /></swiper-slide>
       <swiper-slide><CarItem /></swiper-slide>
-      <swiper-slide><CarItem /></swiper-slide>
-      <swiper-slide><CarItem /></swiper-slide>
+       <swiper-slide><CarItem /></swiper-slide>
       <swiper-slide><CarItem /></swiper-slide>
     </swiper>
     <div class="swiper-button-prev" slot="button-prev"></div>
@@ -54,10 +55,13 @@ export default {
   bottom: 170px;
   left: 0;
   right: 0;
-  widows: 100%;
+  width: 100%;
 }
 .swiper {
   margin-left: 50px;
   margin-right: 50px;
+}
+.swipper-container {
+  overflow: initial;
 }
 </style>
