@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html test</title>
+    <style type="text/css">
+        .card {
+            position: relative;
+            display: grid;
+            background-color: yellow;
+        }
+        .card__thumb{
+            background-color: pink;
+        }
+        .card__content {
+            /* position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: 1rem; */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-color: green;
+        }
+
+        .card__thumb,
+        .card__content {
+            /* grid-column: 1/2;
+            grid-row: 1/2; */
+            grid-area: 1/2;
+        }
+    </style>
+</head>
+
+
+<body>
+    <article class="card">
+        <div class="card__thumb">
+            <img src="./assets/logo.png" alt="">
+        </div>
+        <div class="card__content">
+            <h2><a href="#">Title</a></h2>
+            <p>Subtitle</p>
+        </div>
+    </article>
+
+
+</body>
+
+</html>

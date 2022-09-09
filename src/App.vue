@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Cars />
+    <!-- <Cars /> -->
     <Amap2 />
     <SelectCar />
     <!-- 
@@ -9,8 +9,8 @@
       3.also when user clik the text in the router page, the side bar will close
      -->
     <!-- use the :class to decide if it will open the window -->
-    <!-- <div class="router-sidebar" :class="[show ? '' : 'open']"> -->
-    <div class="router-sidebar" :class="{ open: !show }">
+    <div id="x" class="router-sidebar" :class="[show ? 'close' : 'open']">
+      <!-- <div class="router-sidebar" :class="{ close: !show }"> -->
       <!-- black box router view -->
 
       <router-view />
@@ -33,7 +33,7 @@ export default {
     show() {
       const routeName = this.$route;
       // console.log(routeName.name)
-      return routeName.name === "home" ? false : true;
+      return routeName.name === "home" ? true : false;
     },
   },
   watch: {
@@ -48,7 +48,20 @@ export default {
     // },
   },
   created() {},
-
+  mounted() {
+    document.addEventListener("mouseup", (e) => {
+      const sideMenu = document.getElementById("x");
+      if (sideMenu) {
+        if (!sideMenu.contains(e.target.value)) {
+          this.$router.push({
+            name: "home",
+          });
+        }
+        // console.log(sideMenu);
+        // console.log(e.target.value)
+      }
+    });
+  },
   methods: {},
   components: {
     Amap2,
@@ -67,8 +80,9 @@ export default {
   width: 300px;
   background-color: #394147;
   z-index: 101;
+  right: -600px;
 }
 .open {
-  right: -600px;
+  right: 0px;
 }
 </style>

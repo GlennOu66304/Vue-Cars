@@ -1,5 +1,5 @@
 <template>
-  <div class="car-wrapper">
+  <div :style="'height:' + height">
     <section class="car-item">
       <header>
         <h4 class="car-logo">
@@ -48,10 +48,16 @@
         </a>
       </footer>
     </section>
-    <!-- <section class="car-item car-detailes" :style="'height:' + height">
-      <h4 class="parking-place">某某停车场
 
-        <i class="icon-close"></i>
+    <section class="car-item car-detailes" :style="'height:' + height">
+      <h4>
+        <!-- <hr> -->
+        <a
+          href="https://www.bilibili.com/video/BV1Gz411z75G?p=15&vd_source=a6dcde83e717a44e76ae7c56de63a455"
+          class="park-link2"
+          >某某停车场
+          <img src="../assets/right-arrow.png" alt="" class="right-arrow" />
+        </a>
       </h4>
       <header>
         <h4 class="car-logo">
@@ -62,7 +68,11 @@
           <span>新能源汽车 5座</span>
         </p>
       </header>
-    </section> -->
+      <img class="car-img2" src="../assets/car-img.png" alt="" />
+
+      <h3 class="car-license">粤 B745N8</h3>
+      <p>约600KM</p>
+    </section>
   </div>
 </template>
 
@@ -72,7 +82,7 @@ export default {
   props: {
     height: {
       type: String,
-      default: "180px",
+      default: "200px",
     },
   },
   data() {
@@ -90,11 +100,14 @@ export default {
 </script>
 
 <style>
-
+.car-wrapper {
+  /* position: relative; */
+}
 .car-item {
   height: 200px;
   border-radius: 24px;
   background-color: #fff;
+  /* z-index: 1; */
 }
 header {
   display: flex;
@@ -122,6 +135,12 @@ img {
   width: 190px;
 }
 
+.car-img2 {
+  height: 80px;
+  width: 190px;
+  margin-left: 90px;
+  margin-right: 90px;
+}
 .car-content {
   position: relative;
   height: 70px;
@@ -139,14 +158,12 @@ img {
   font-size: 18px;
   padding-left: 8px;
   margin-bottom: 0;
- 
 }
 
 .car-battery {
   padding-left: 8px;
-  margin-top:0;
-   height: 50px;
-   
+  margin-top: 0;
+  height: 50px;
 }
 .car-battery-item {
   display: inline-block;
@@ -167,7 +184,6 @@ strong {
   font-size: 22px;
 }
 footer {
-  
   padding-top: 15px;
   padding-left: 15px;
   display: inline-block;
@@ -179,27 +195,36 @@ footer {
   color: #b2b2b4;
   opacity: 0.5;
 }
+.park-link2 {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #e1e0e1;
+  color: #b2b2b4;
+  opacity: 0.5;
+}
 .right-arrow {
   float: right;
 }
 
 .car-detailes {
-  display: none;
+  /* display: none; */
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   padding-top: 0;
+  width: 100%;
+  height: 100%;
+  /* z-index: 999; */
 }
 .parking-place {
   position: relative;
-  padding:26px 0 20px;
+  padding: 26px 0 20px;
   border-bottom: 1px solid #e1e1e1;
   font-size: 10px;
-  color:#a9adad;
+  color: #a9adad;
 }
-.icon-close{
+.icon-close {
   display: block;
-
 }
 </style>

@@ -7,7 +7,7 @@
       <li><i class="icon icon-search"></i></li>
       <li class="select-car-btn">select car</li>
       <li><i class="icon icon-gps"></i></li>
-      <li><i class="icon icon-avatar"></i></li>
+      <li><i class="icon icon-avatar" @click="user"></i></li>
     </ul>
   </div>
 </template>
